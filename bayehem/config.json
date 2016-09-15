@@ -1,0 +1,15 @@
+{
+    "language"        : "PYTHON",
+    "main-file"       : "bayehem.py",
+    "experiment-name" : "bayehem_simple",
+    "likelihood"      : "GAUSSIAN",
+    "variables" : {
+        "k" : {
+            "type" : "INT",
+            "size" : 1,
+            "min"  : 13,
+            "max"  : 121
+        }
+    }
+}
+
