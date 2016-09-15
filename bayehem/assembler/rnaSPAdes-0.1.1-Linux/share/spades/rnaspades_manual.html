@@ -1,0 +1,305 @@
+<html>
+<head>
+    <title>rnaSPAdes 0.1.1 Manual</title>
+    <style type="text/css">
+        .code {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+<h1>rnaSPAdes 0.1.1 Manual</h1>
+
+1. <a href="#sec1">About rnaSPAdes</a><br>
+2. <a href="#sec2">Installation</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;2.1. <a href="#sec2.1">Downloading rnaSPAdes Linux binaries</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;2.2. <a href="#sec2.2">Downloading rnaSPAdes binaries for Mac</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;2.3. <a href="#sec2.3">Downloading and compiling rnaSPAdes source code</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;2.4. <a href="#sec2.4">Verifying your installation</a><br>
+3. <a href="#sec3">rnaSPAdes command line options</a><br>
+4. <a href="#sec4">Assembly evaluation</a><br>
+4. <a href="#sec5">Citation</a><br>
+5. <a href="#sec6">Feedback and bug reports</a><br>
+<br>
+
+<a name="sec1"></a>
+<h2>1 About rnaSPAdes</h2>
+<p>
+    rnaSPAdes is an assembler for RNA-Seq data, which is based on <a href="http://bioinf.spbau.ru/en/spades" target="_blank">SPAdes genome assembler</a>. 
+This manual will help you to install and run rnaSPAdes. Note, that this manual only contains information specific for rnaSPAdes. 
+
+<p> <b>To learn basic options we strongly recommend to read <a href="manual.html" target="_blank">SPAdes manual</a> first. </b>
+
+
+<a name="sec2"></a>
+<h2>2 Installation</h2>
+<p>
+    rnaSPAdes requires a 64-bit Linux system <!-- or Mac OS --> and Python (supported versions are 2.4, 2.5, 2.6, 2.7, 3.2 and 3.3) to be pre-installed on it. To obtain rnaSPAdes you can either download binaries or download source code and compile it yourself.
+
+<a name="sec2.1"></a>
+<h3>2.1 Downloading rnaSPAdes Linux binaries</h3>
+
+<p>
+    To download <a href="http://spades.bioinf.spbau.ru/rnaspades0.1.1/rnaSPAdes-0.1.1-Linux.tar.gz">rnaSPAdes Linux binaries</a> and extract them, go to the directory in which you wish rnaSPAdes to be installed and run:
+
+<pre  class="code">
+<code>
+    wget http://spades.bioinf.spbau.ru/rnaspades0.1.1/rnaSPAdes-0.1.1-Linux.tar.gz
+    tar -xzf rnaSPAdes-0.1.1-Linux.tar.gz
+    cd rnaSPAdes-0.1.1-Linux/bin/
+</code>
+</pre>
+
+<p>
+    In this case you do not need to run any installation scripts &ndash; rnaSPAdes is ready to use. The following files will be placed in the <code>bin</code> directory:
+    <ul>
+        <li><code>rnaspades.py</code>  (main executable script)</li>
+        <li><code>hammer</code>  (read error correcting module for Illumina reads)</li>
+        <li><code>ionhammer</code>  (read error correcting module for IonTorrent reads)</li>
+        <li><code>spades</code>  (assembly module)</li>
+        <li><code>bwa-spades</code>  (<a href="http://bio-bwa.sourceforge.net" target="_blank">BWA</a> alignment module which is required for mismatch correction)</li>
+        <li><code>corrector</code>  (mismatch correction module)</li>
+    </ul>
+
+<p>
+    We also suggest adding rnaSPAdes installation directory to the <code>PATH</code> variable.
+ 
+<a name="sec2.2"></a>
+<h3>2.2 Downloading rnaSPAdes binaries for Mac</h3>
+<p>
+rnaSPAdes binaries for Mac OS will be available after first public release.
+<!--
+<p>
+    To obtain <a href="http://spades.bioinf.spbau.ru/rnaspades0.1.1/rnaSPAdes-0.1.1-Darwin.tar.gz">SPAdes binaries for Mac</a>, go to the directory in which you wish rnaSPAdes to be installed and run:
+
+<pre  class="code">
+<code>
+    curl http://spades.bioinf.spbau.ru/rnaspades0.1.1/rnaSPAdes-0.1.1-Darwin.tar.gz -o rnaSPAdes-3.5.0-Darwin.tar.gz
+    tar -zxf rnaSPAdes-3.5.0-Darwin.tar.gz
+    cd rnaSPAdes-3.5.0-Darwin/bin/
+</code>
+</pre>
+
+<p>
+    Just as in Linux, rnaSPAdes is ready to use and no further installation steps are required. You will get the same files in the <code>bin</code> directory:
+    <ul>
+        <li><code>rnaspades.py</code>  (main executable script)</li>
+        <li><code>hammer</code>  (read error correcting module for Illumina reads)</li>
+        <li><code>ionhammer</code>  (read error correcting module for IonTorrent reads)</li>
+        <li><code>spades</code>  (assembly module)</li>
+        <li><code>bwa-spades</code>  (<a href="http://bio-bwa.sourceforge.net" target="_blank">BWA</a> alignment module which is required for mismatch correction)</li>
+        <li><code>corrector</code>  (mismatch correction module)</li>
+    </ul>
+
+<p>
+    We also suggest adding rnaSPAdes installation directory to the <code>PATH</code> variable.
+ -->
+
+<a name="sec2.3"></a>
+<h3>2.3 Downloading and compiling rnaSPAdes source code</h3>
+<p>
+    If you wish to compile rnaSPAdes by yourself you will need the following libraries to be pre-installed:
+    <ul>
+        <li>g++ (version 4.7 or higher)</li>
+        <li>cmake (version 2.8.8 or higher)</li>
+        <li>zlib</li>
+        <li>libbz2</li>
+    </ul>
+
+<p>
+    If you meet these requirements, you can download the <a href="http://spades.bioinf.spbau.ru/rnaspades0.1.1/rnaSPAdes-0.1.1.tar.gz">SPAdes source code</a>: 
+
+<pre class="code">
+<code>
+    wget http://spades.bioinf.spbau.ru/rnaspades0.1.1/rnaSPAdes-0.1.1.tar.gz
+    tar -xzf rnaSPAdes-3.5.0.tar.gz
+    cd rnaSPAdes-3.5.0
+</code>
+</pre>
+
+<p>
+    and build it with the following script:
+
+<pre class="code">
+<code>
+    ./spades_compile.sh
+</code>
+</pre>
+
+<p> 
+    rnaSPAdes will be built in the directory <code>./bin</code>. If you wish to install rnaSPAdes into another directory, you can specify full path of destination folder by running the following command in <code>bash</code> or <code>sh</code>:
+
+<pre class="code">
+<code>
+    PREFIX=&lt;destination_dir> ./spades_compile.sh
+</code>
+</pre>
+
+<p>
+    for example:
+
+<pre class="code">
+<code>
+    PREFIX=/usr/local ./spades_compile.sh
+</code>
+</pre>
+
+<p>
+   which will install rnaSPAdes into <code>/usr/local/bin</code>.
+    
+<p>
+    After installation you will get the same files in <code>./bin</code> (or <code>&lt;destination_dir>/bin</code> if you specified PREFIX) directory:
+    <ul>
+        <li><code>rnaspades.py</code>  (main executable script)</li>
+        <li><code>hammer</code>  (read error correcting module for Illumina reads)</li>
+        <li><code>ionhammer</code>  (read error correcting module for IonTorrent reads)</li>
+        <li><code>spades</code>  (assembly module)</li>
+        <li><code>bwa-spades</code>  (<a href="http://bio-bwa.sourceforge.net" target="_blank">BWA</a> alignment module which is required for mismatch correction)</li>
+        <li><code>corrector</code>  (mismatch correction module)</li>
+    </ul>
+
+<p>
+    We also suggest adding rnaSPAdes installation directory to the <code>PATH</code> variable.
+
+
+<a name="sec2.4"></a>
+<h3>2.4 Verifying your installation</h3>
+<p>
+    For testing purposes, rnaSPAdes comes with a toy data set (reads that align to first 1000 bp of <i>E. coli</i>). To try rnaSPAdes on this data set, run:
+
+<pre class="code">
+<code>
+    &lt;spades installation dir>/rnaspades.py --test
+</code>
+</pre>
+
+<p>
+    If you added rnaSPAdes installation directory to the <code>PATH</code> variable, you can run:
+
+<pre class="code">
+<code>
+    rnaspades.py --test
+</code>
+</pre>
+
+    For the simplicity we further assume that rnaSPAdes installation directory is added to the <code>PATH</code> variable.
+
+
+<p>
+    If the installation is successful, you will find the following information at the end of the log:
+
+<pre class="code">
+<code>
+===== Assembling finished. 
+
+ * Corrected reads are in /home/andrey/ablab/algorithmic-biology/assembler/spades_test/corrected/
+ * Assembled contigs are in /home/andrey/ablab/algorithmic-biology/assembler/spades_test/contigs.fasta (contigs.fastg)
+ * Assembled scaffolds are in /home/andrey/ablab/algorithmic-biology/assembler/spades_test/scaffolds.fasta (scaffolds.fastg)
+
+======= rnaSPAdes pipeline finished WITH WARNINGS!
+
+=== Error correction and assembling warnings:
+ * 0:00:00.491   16M /    3G   WARN  General                 (graph_simplification.hpp  :1357)   Mean coverage wasn't reliably estimated
+======= Warnings saved to /home/andrey/ablab/algorithmic-biology/assembler/spades_test/warnings.log
+
+========= TEST PASSED CORRECTLY.
+
+rnaSPAdes log can be found here: /home/andrey/ablab/algorithmic-biology/assembler/spades_test/spades.log
+
+Thank you for using rnaSPAdes!
+
+</code>
+</pre>
+
+
+
+<a name="sec3"></a>
+<h2>3 rnaSPAdes command line options</h2>
+
+
+<p>
+    To run rnaSPAdes from the command line, type 
+
+<pre class="code">
+<code>
+    rnaspades.py [options] -o &lt;output_dir>
+</code>
+</pre>
+Note that we assume that rnaSPAdes installation directory is added to the <code>PATH</code> variable (provide full path to rnaSPAdes executable otherwise: <code>&lt;rnaspades installation dir>/rnaspades.py</code>). 
+
+<p>
+Below we describe only main options and options specific for rnaSPAdes. To learn basic options we strongly recommend to read <a href="manual.html#sec3.2" target="_blank">SPAdes manual</a> first.
+
+
+
+<a name="basicopt"></a>
+<h4>Basic options</h4>
+<p>
+    <code>-o &lt;output_dir> </code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Specify the output directory. Required option.
+</p>
+
+
+<p>
+    <code>--iontorrent </code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;This flag is required when assembling IonTorrent data. Allows BAM files as input. Carefully read <a href="manual.html#sec3.3">section 3.3 of SPAdes manual</a> before using this option.
+</p>
+
+
+<p>
+    <code>--test</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Runs rnaSPAdes on the toy data set; see <a href="#sec2.3">section 2.3</a>.
+</p>
+
+<p>
+    <code>-h</code> (or <code>--help</code>)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Prints help.
+</p>
+
+
+<a name="rnacopt"></a>
+<h4>Options for transcriptome assembly</h4>
+<p>
+    <code>--draft-assembly </code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Perform raw draft assembly. Noticeably reduces running time, but may result in a deteriorated assembly quality. 
+</p>
+
+
+<p>
+    <code>--min-complete-transcript &lt;int></code><br> Remove low-covered (coverage less than 4) isolated transcript fragments with shorted than the specified value. Default value is 200 bp. Note, that using this thresholds does not remove all transcripts shorter than the specified value, but only those that have coverage gaps at both ends.
+    &nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+
+
+
+
+<a name="sec4">
+<h2>4 Assembly evaluation</h2>
+
+<p>
+    <a href="http://bioinf.spbau.ru/en/rnaquast" target="_blank">rnaQUAST</a> may be used to generate summary statistics on test datasets when reference genome and gene database are available.
+<br>
+
+
+
+<a name="sec5">
+<h2>5 Citation</h2>
+<p>
+Paper to be submitted.
+
+
+<a name="sec6">
+<h2>6 Feedback and bug reports</h2>
+<p>
+    Your comments, bug reports, and suggestions are very welcomed. They will help us to further improve rnaSPAdes.
+
+<p>
+    If you have any troubles running rnaSPAdes, please send us <code>params.txt</code> and <code>spades.log</code> from the directory <code>&lt;output_dir></code>.
+
+<p>
+    Address for communications: <a href="mailto:spades.support@bioinf.spbau.ru" target="_blank">spades.support@bioinf.spbau.ru</a>.
+
+<br/><br/><br/><br/><br/>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+
+RNASPADES: ASSEMBLER FOR RNA-SEQ DATA BASED ON SPADES GENOME ASSEMBLER
+Copyright (c) 2011-2015 Saint-Petersburg Academic University
+
+rnaSPAdes is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, Version 2,
+dated June 1991, as published by the Free Software Foundation.
+
+rnaSPAdes is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+-------------------------------------------------------------------------------
+
+Current rnaSPAdes contributors:
+
+    Dmitry Antipov,
+    Andrey Prjibelski and 
+    SPAdes team
+
+Contacts:
+    http://bioinf.spbau.ru/rnaspades
+    spades.support@bioinf.spbau.ru
+
+References:
+
+Paper to be submitted
