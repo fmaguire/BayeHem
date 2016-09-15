@@ -1,0 +1,22 @@
+To build REF-EVAL, simply run "make" from the current directory. This will
+build two executables (plus a few dependent libraries), ./ref-eval and
+./ref-eval-estimate-true-assembly, which you can run from the current directory or
+move elsewhere. (The executables are statically linked with their local
+dependencies, so you don't need to worry about the library path.) For
+information about how to run REF-EVAL once it is built, see ./ref-eval --help
+and ./ref-eval-estimate-true-assembly --help.
+
+If the "make" command fails, you might need to tweak the build process a bit.
+To do so, edit ./Makefile and make changes as appropriate to the section marked
+"Configuration". Then run "make" again.
+
+REF-EVAL comes with a number of unit tests. To build and run these tests, run
+"make test" from the current directory. A C++11-compatible compiler is required
+to build some of the tests. To be clear, the tests are mainly useful for
+developers, not normal users of the software. It isn't necessary for users to
+build or run the tests.
+
+REF-EVAL also comes with regression tests. These tests compare the output of
+the current version of REF-EVAL to the output we used in our paper (and checked
+carefully at that time). To run these tests, follow the instructions in
+./test_against_paper/README.
