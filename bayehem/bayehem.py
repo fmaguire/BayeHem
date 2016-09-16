@@ -1,11 +1,12 @@
 import subprocess
+from scipy import stats
 import os
 
 def bayehem(k):
     """
     Bayehem function input k-mer val
     """
-    if k % 2 == 0:
+    if k[0] % 2 == 0:
         k = k+1
 
     job_id = "k{}".format(k)
@@ -15,7 +16,6 @@ def bayehem(k):
     score = likelihood(assembly_path, k)
 
     return score
-
 
 def evaluate(k):
 
@@ -29,7 +29,7 @@ def evaluate(k):
 
     sh = " ".join([assembler_path, output_dir, "-k {}".format(k[0]), data_path])
 
-    print("Evaluating k={}".format(k[0]))
+    print("##Evaluating k={}##".format(k[0]))
 
     with open(os.devnull, 'w') as devnull:
         print(sh)
@@ -50,7 +50,7 @@ def likelihood(assembly_path, k):
 
     sh = " ".join([rsem_path, data_path, assembly_path, out_name, length])
 
-    print("Calculating Likelihood")
+    print("##Calculating Likelihood##")
 
     with open(os.devnull, 'w') as devnull:
         print(sh)
@@ -66,7 +66,7 @@ def likelihood(assembly_path, k):
 def main(job_id, params):
     print 'Anything printed here will end up in the output directory for job #%d' % job_id
     print params
-    return bayehem(params['k'])#, job_id)
+    return bayehem2(params['k'])#, job_id)
 
 if __name__=='__main__':
-    print(bayehem(13, "test"))
+    print(bayehem([13]))
